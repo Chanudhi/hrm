@@ -1,0 +1,254 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Panel</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href="styles.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+<body class="bg-gray-100 relative overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="bg-gray-800 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <h1 class="self-center text-2xl font-semibold whitespace-nowrap mb-4">Manager Dashboard</h1>
+
+        <!-- Mobile Menu Open Button -->
+        <button id="toggleOpen" class="lg:hidden">
+            <svg class="w-7 h-7" fill="#f0f0f0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+
+        <!-- Navbar Links -->
+        <div id="collapseMenu" class="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-8 w-full lg:w-auto">
+            <ul class="flex flex-col lg:flex-row items-center lg:items-baseline gap-4 lg:gap-8">
+                <li><a href="#tasks" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Manage Tasks</a></li>
+                <li><a href="#profiles" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Employee Profiles</a></li>
+                <li><a href="#overview" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Employee Overview</a></li>
+                <li><a href="#attendance" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Attendance</a></li>
+                <li><a href="#leave-requests" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Leave Requests</a></li>
+                <li><a href="#reports" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Reports</a></li>
+                <li><a href="#team-management" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Team Management</a></li>
+                <li><a href="index.html" class="py-2 px-3 text-white hover:bg-blue-700 rounded">Logout</a></li><!--Insert the link for home page-->
+            </ul>
+        </div>
+
+        <!-- Mobile Close Button -->
+        <button id="toggleClose" class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black" viewBox="0 0 320.591 320.591">
+                <path d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"></path>
+                <path d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+      <!-- Main Content -->
+      <main class="relative z-10 flex-grow w-full p-8">
+        <!-- Tasks Section -->
+        <section id="tasks" class="bg-white p-8 rounded-lg shadow-lg mb-12 w-full">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Manage Tasks</h2>
+            <p class="text-gray-700 text-center mb-10">Assign, track, and manage tasks efficiently for your team.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="task-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">Task 1</h3>
+                    <p class="text-gray-600 mt-4">Prepare Monthly Report</p>
+                </div>
+                <div class="task-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">Task 2</h3>
+                    <p class="text-gray-600 mt-4">Organize Team Meeting</p>
+                </div>
+                <div class="task-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">Task 3</h3>
+                    <p class="text-gray-600 mt-4">Review Project Milestones</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profiles Section -->
+        <section id="profiles" class="bg-white p-8 rounded-lg shadow-lg w-full">
+            <a href="Employees.html"><h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center ">Employee Profiles</h2></a>
+            <p class="text-gray-700 text-center mb-10">Access detailed profiles of your team members and track their progress.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="profile-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">John Doe</h3>
+                    <p class="text-gray-600 mt-4">Position: Senior Developer</p>
+                </div>
+                <div class="profile-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">Jane Smith</h3>
+                    <p class="text-gray-600 mt-4">Position: Project Manager</p>
+                </div>
+                <div class="profile-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-500">Alan Brown</h3>
+                    <p class="text-gray-600 mt-4">Position: UI/UX Designer</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+                   <!-- Employee Overview Section -->
+                   <section id="overview" class="bg-white p-8 rounded-lg shadow-lg w-full mb-12">
+                    <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Employee Overview</h2>
+                    <p class="text-gray-700 text-center mb-10">View an overview of your team's performance and overall productivity.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="overview-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">John Doe</h3>
+                            <p class="text-gray-600 mt-4">Tasks Completed: 45</p>
+                            <p class="text-gray-600">Performance: Excellent</p>
+                        </div>
+                        <div class="overview-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Jane Smith</h3>
+                            <p class="text-gray-600 mt-4">Tasks Completed: 38</p>
+                            <p class="text-gray-600">Performance: Good</p>
+                        </div>
+                        <div class="overview-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Alan Brown</h3>
+                            <p class="text-gray-600 mt-4">Tasks Completed: 30</p>
+                            <p class="text-gray-600">Performance: Average</p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Attendance Section -->
+                <section id="attendance" class="bg-white p-8 rounded-lg shadow-lg w-full mb-12">
+                    <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Attendance</h2>
+                    <p class="text-gray-700 text-center mb-10">Track your team's attendance and monitor their presence.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="attendance-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">John Doe</h3>
+                            <p class="text-gray-600 mt-4">Days Present: 22</p>
+                            <p class="text-gray-600">Days Absent: 3</p>
+                        </div>
+                        <div class="attendance-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Jane Smith</h3>
+                            <p class="text-gray-600 mt-4">Days Present: 20</p>
+                            <p class="text-gray-600">Days Absent: 5</p>
+                        </div>
+                        <div class="attendance-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Alan Brown</h3>
+                            <p class="text-gray-600 mt-4">Days Present: 18</p>
+                            <p class="text-gray-600">Days Absent: 7</p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Leave Requests Section -->
+                <section id="leave-requests" class="bg-white p-8 rounded-lg shadow-lg w-full mb-12">
+                    <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Leave Requests</h2>
+                    <p class="text-gray-700 text-center mb-10">Manage and approve your team's leave requests.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="leave-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">John Doe</h3>
+                            <p class="text-gray-600 mt-4">Leave Type: Annual</p>
+                            <p class="text-gray-600">Leave Dates: 5th Jan - 7th Jan</p>
+                            <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Approve</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Reject</button>
+                        </div>
+                        <div class="leave-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Jane Smith</h3>
+                            <p class="text-gray-600 mt-4">Leave Type: Sick</p>
+                            <p class="text-gray-600">Leave Dates: 10th Jan - 12th Jan</p>
+                            <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Approve</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Reject</button>
+                        </div>
+                        <div class="leave-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Alan Brown</h3>
+                            <p class="text-gray-600 mt-4">Leave Type: Maternity</p>
+                            <p class="text-gray-600">Leave Dates: 15th Jan - 30th Jan</p>
+                            <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Approve</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Reject</button>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Reports Section -->
+                <section id="reports" class="bg-white p-8 rounded-lg shadow-lg w-full mb-12">
+                   <a href="Report.html " ><h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Reports</h2></a>
+                    <p class="text-gray-700 text-center mb-10">Generate and view detailed reports on employee performance and work progress.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="report-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Performance Report - Q1</h3>
+                            <p class="text-gray-600 mt-4">Employee Performance Summary</p>
+                            <a href = "Q1-global-performance-report-2024.pdf"><button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">View Report</button></a>
+                        </div>
+                        <div class="report-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Attendance Report - Dec</h3>
+                            <p class="text-gray-600 mt-4">Attendance Trends for December</p>
+                            <a href="hr-employee-attendance-details-v1-thumbnail.webp"><button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">View Report</button></a>
+                        </div>
+                        <div class="report-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Leave Report - Annual</h3>
+                            <p class="text-gray-600 mt-4">Annual Leave Summary</p>
+                            <a href="human-resources-leave-and-vacation-tracker-2024.png"><button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">View Report</button></a>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Team Management Section -->
+                <section id="team-management" class="bg-white p-8 rounded-lg shadow-lg w-full mb-12">
+                    <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center">Team Management</h2>
+                    <p class="text-gray-700 text-center mb-10">Manage your team members, assign roles, and monitor team dynamics.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="team-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">John Doe</h3>
+                            <p class="text-gray-600 mt-4">Role: Senior Developer</p>
+                            <p class="text-gray-600">Tasks Assigned: 8</p>
+                            <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded">Change Role</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Remove from Team</button>
+                        </div>
+                        <div class="team-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Jane Smith</h3>
+                            <p class="text-gray-600 mt-4">Role: Project Manager</p>
+                            <p class="text-gray-600">Tasks Assigned: 6</p>
+                            <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded">Change Role</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Remove from Team</button>
+                        </div>
+                        <div class="team-card bg-gray-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+                            <h3 class="text-xl font-semibold text-blue-500">Alan Brown</h3>
+                            <p class="text-gray-600 mt-4">Role: UI/UX Designer</p>
+                            <p class="text-gray-600">Tasks Assigned: 5</p>
+                            <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded">Change Role</button>
+                            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Remove from Team</button>
+                        </div>
+                    </div>
+                </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-6 mt-12 relative z-10">
+        <p>&copy; 2025  HRM System | Manager Panel</p>
+    </footer>
+
+    <script>
+        const toggleOpen = document.getElementById('toggleOpen');
+        const toggleClose = document.getElementById('toggleClose');
+        const collapseMenu = document.getElementById('collapseMenu');
+    
+        // Show the menu when the open button is clicked
+        toggleOpen.addEventListener('click', () => {
+            collapseMenu.classList.remove('hidden');
+            toggleOpen.classList.add('hidden');
+            toggleClose.classList.remove('hidden');
+        });
+    
+        // Hide the menu when the close button is clicked
+        toggleClose.addEventListener('click', () => {
+            collapseMenu.classList.add('hidden');
+            toggleOpen.classList.remove('hidden');
+            toggleClose.classList.add('hidden');
+        });
+    </script>
+    
+
+    
+
+</body>
+</html>
+
+    
+
+  

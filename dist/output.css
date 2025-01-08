@@ -1,0 +1,249 @@
+/* Global Styles */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f3f4f6;
+  /* Light gray background for the whole page */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+
+header {
+  background-color: #2d3748;
+  /* Dark gray background for the navbar */
+  padding: 1rem 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  /* Ensure navbar links are spaced */
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+}
+
+header button {
+  border: none;
+  background: transparent;
+}
+
+header .menu-item {
+  color: white;
+  padding: 0.5rem rem;
+  text-decoration: none;
+}
+
+header .menu-item:hover {
+  background-color: #4a5568;
+  /* Darker shade on hover */
+}
+
+/* Font color for links inside the mobile menu */
+
+#collapseMenu a {
+  color: #f5efef;
+  /* Change this to your desired color */
+}
+
+#collapseMenu a:hover {
+  color: #f3f9f5;
+  /* This is the hover color, change as needed */
+}
+
+/* Background color of the mobile menu */
+
+#collapseMenu {
+  background-color: #1d1d3b;
+  /* Change this to set the background color */
+}
+
+/* Optional: If you want to change the color of the close button */
+
+#toggleClose svg {
+  fill: #ff0026;
+  /* Change this to the color you want for the close button */
+}
+
+/* When the menu is visible, slide it to the left */
+
+#collapseMenu.transform.translate-x-0 {
+  left: 0;
+}
+
+#toggleClose {
+  top: 2rem;
+  right: 1rem;
+}
+
+@media (min-width: 1024px) {
+  #collapseMenu {
+    display: flex !important;
+    /* Ensure the menu is visible on larger screens */
+  }
+
+  #toggleOpen {
+    display: none;
+    /* Hide the hamburger menu on larger screens */
+  }
+}
+
+@media (max-width: 1024px) {
+  #toggleOpen {
+    display: block;
+    /* Show the hamburger menu */
+  }
+
+  /* Ensure the mobile menu slides in from the left */
+
+  #collapseMenu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+    display: none;
+    /* Initially hide the menu on mobile */
+  }
+
+  /* When the menu is toggled, show it */
+
+  #collapseMenu.active {
+    display: block;
+  }
+}
+
+/* Card and Section Styles */
+
+.card {
+  background-color: #edf2f7;
+  /* Lighter background for cards */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
+}
+
+/* Section Styling */
+
+section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3182ce;
+}
+
+section p {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+/* Card Layout Styling */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mobile Menu Toggle */
+
+@media (max-width: 768px) {
+  #navbar-default {
+    display: none;
+  }
+
+  #navbar-default.show {
+    display: block;
+  }
+}
+
+/* Footer Styling */
+
+footer {
+  background-color: #2d3748;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+/* Hover Effects on Buttons */
+
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  /* Button zoom effect on hover */
+}
+
+/* Specific Button Colors */
+
+.bg-blue-500 {
+  background-color: #3182ce;
+}
+
+.bg-blue-500:hover {
+  background-color: #63b3ed;
+  /* Light blue on hover */
+}
+
+.bg-green-500 {
+  background-color: #38a169;
+}
+
+.bg-green-500:hover {
+  background-color: #68d391;
+  /* Light green on hover */
+}
+
+.bg-red-500 {
+  background-color: #e53e3e;
+}
+
+.bg-red-500:hover {
+  background-color: #f56565;
+  /* Light red on hover */
+}
+
+.bg-yellow-500 {
+  background-color: #ecc94b;
+}
+
+.bg-yellow-500:hover {
+  background-color: #f6e05e;
+  /* Light yellow on hover */
+}
+
+button:focus {
+  outline: 2px solid #3182ce;
+}
